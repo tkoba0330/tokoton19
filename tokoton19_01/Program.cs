@@ -8,9 +8,9 @@ namespace tokoton19_01
 {
     class A
     {
-        public void CountUp(ref int y)
+        public void CountUp(Action<int> setter, Func<int> getter)
         {
-            y++;
+            setter(getter() + 1);
         }
     }
 
@@ -20,7 +20,7 @@ namespace tokoton19_01
         public void ShoeMe1()
         {
             x = 0;
-            new A().CountUp(ref x);
+            new A().CountUp((a) => { x = a; }, () => x);
             Console.WriteLine(x);
         }
     }
