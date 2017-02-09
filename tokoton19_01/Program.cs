@@ -10,13 +10,13 @@ namespace tokoton19_01
     {
         public void CountUp(B b)
         {
-            B.x++;
+            b.x++;
         }
     }
 
     class B
     {
-        private int x;
+        internal int x;
         public void ShoeMe1()
         {
             new A().CountUp(this);
