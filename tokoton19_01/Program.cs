@@ -8,18 +8,19 @@ namespace tokoton19_01
 {
     class A
     {
-        public void CountUp(B b)
+        public void CountUp(ref int y)
         {
-            b.x++;
+            y++;
         }
     }
 
     class B
     {
-        internal int x;
+        private int x;
         public void ShoeMe1()
         {
-            new A().CountUp(this);
+            x = 0;
+            new A().CountUp(ref x);
             Console.WriteLine(x);
         }
     }
@@ -29,6 +30,8 @@ namespace tokoton19_01
         static void Main(string[] args)
         {
             new B().ShoeMe1();
+
+            Console.ReadLine();
         }
     }
 }
