@@ -11,19 +11,18 @@ namespace tokoton19_02
     {
         public void CountUp(B b)
         {
-            var field = b.GetType().GetField("x", BindingFlags.GetField | BindingFlags.SetField | BindingFlags.NonPublic | BindingFlags.Instance);
+            var field = b.GetType().GetProperty("x", BindingFlags.GetProperty | BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance);
 
-            field.SetValue(b, (int)(field.GetValue(b)) + 1);
+            field.SetValue(b, (int)(field.GetValue(b)) + 1, null);
         }
     }
 
 
     class B
     {
-        private int x;
+        private int x { get; set; } = 0;
         public void ShowMe1()
         {
-            x = 0;
             new A().CountUp(this);
             Console.WriteLine();
         }
